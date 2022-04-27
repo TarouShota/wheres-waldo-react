@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.571057bb.css",
+    "main.js": "/static/js/main.5d4516a1.js",
+    "static/js/787.93c0ff9f.chunk.js": "/static/js/787.93c0ff9f.chunk.js",
+    "static/media/main-image.jpg": "/static/media/main-image.314cec99f414807b7e27.jpg",
+    "static/media/Super-Mario-Bowser.png": "/static/media/Super-Mario-Bowser.8cf9b79c92b1dbd718ea.png",
+    "static/media/patrick.png": "/static/media/patrick.9d0da8142b160bdc3a63.png",
+    "static/media/shinigami-ryu.png": "/static/media/shinigami-ryu.8182d21ae2c16ad9d562.png",
+    "static/media/turnip-head.png": "/static/media/turnip-head.94e00c627ee9a89f6179.png",
+    "static/media/tom.png": "/static/media/tom.c8bb147ced6e6c88efba.png",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.571057bb.css.map": "/static/css/main.571057bb.css.map",
+    "main.5d4516a1.js.map": "/static/js/main.5d4516a1.js.map",
+    "787.93c0ff9f.chunk.js.map": "/static/js/787.93c0ff9f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.571057bb.css",
+    "static/js/main.5d4516a1.js"
+  ]
+}

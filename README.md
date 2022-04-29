@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 ![alt text](https://github.com/[TarouShota]/[wheres-waldo-react]/blob/[master]/Faw-diagram.png?raw=true)
+![alt text](https://ibb.co/314Xjp0)
 
 ## Available Scripts
 

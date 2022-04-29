@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![alt text](https://github.com/[TarouShota]/[wheres-waldo-react]/blob/[master]/Faw-diagram.png?raw=true)
 
 ## Available Scripts
 

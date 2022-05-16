@@ -1,8 +1,5 @@
 # React-based find a waldo game
 
-The game was created by - Adylov Bekzot
-
-Group 2, Novák David
 
 
 

@@ -9,12 +9,13 @@ import bowser from './Super-Mario-Bowser.png'
 import ryuk from './shinigami-ryu.png'
 import patrick from './patrick.png'
 import tom from './tom.png'
-import { useTimer } from 'react-timer-hook';
-import Demo from './PositionTracker';
+// import { useTimer } from 'react-timer-hook';
+
+// import Demo from './PositionTracker';
 import { useMouse } from 'react-use';
 import MyTimer from './Timer';
-import { characters, chars } from './main-script';
-import { getNextKeyDef } from '@testing-library/user-event/dist/keyboard/getNextKeyDef';
+import { characters, chars, playerBoardKeys, playerBoardNames, playerBoard } from './main-script';
+// import { getNextKeyDef } from '@testing-library/user-event/dist/keyboard/getNextKeyDef';
 
 
 
@@ -45,6 +46,11 @@ export function Input() {
   const [chooseObject, setChooseObject] = useState(false);
   const [alertBlock, setAlertBlock] = useState('hidden');//right,wrong
 
+  // gameWon: false, patrick: false, bowser: true, turnipHead: true, tom:
+  const [playerTableState, setPlayerTableState] = useState({
+    gameWon: false, patrick: false, bowser: false, turnipHead: false, tom: false
+  })
+
   window.charList = []
 
 
@@ -66,9 +72,12 @@ export function Input() {
 
   function MyButton() {
     return (
-      <button onClick={gameStart}>
-        Start
-      </button>
+      <>
+        {/* <button class="button-35" role="button" onClick={gameStart}>Start</button> */}
+        <button class="button-57" role="button" onClick={gameStart}><span class="text" >Start</span><span>Good Luck!</span></button>
+
+        {/* <button class="button-4" role="button" >Start</button> */}
+      </>
     )
   }
   /* A function that is called when the user clicks on the image. It is used to display the dropdown
@@ -128,7 +137,7 @@ export function Input() {
 
     for (const char in chars) {
       if (chars[`${char}`].found === false) {
-        window.charList.push(<li key={char} onClick={listClick}>{chars[`${char}`].name}</li>)
+        window.charList.push(<li key={char} className={'li-elem'} onClick={listClick}>{chars[`${char}`].name}</li>)
       }
     }
     if (window.charList.length == 0) {
@@ -148,13 +157,27 @@ export function Input() {
       top: `${y}px`,
       background: '#2A2B2E',
       color: '#C0E2C4',
-      borderRadius: '0.6rem'
+      borderRadius: '0.6rem',
+      width: '20vw'
     }}>
       <ul style={{
         listStyleType: 'none',
         marginRight: '2rem'
       }}> {window.charList}</ul>
     </div>
+
+    // { name: "Bata55555", gameWon: false, patrick: false, bowser: true, turnipHead: true, tom: true },
+
+
+    // let headers = {
+    //   player: "player".replace(/,/g, ""), // remove commas to avoid errors
+    //   gameWon: "gameWon",
+    //   patrick: "patrick",
+    //   bowser: "bowser",
+    //   turnipHead: "turnipHead",
+    //   tom: "tom"
+    // };
+
 
   }
 
@@ -167,14 +190,168 @@ export function Input() {
   //       width: '40%',
   //       height: '120px',
   //       border: '10px solid white'
-  //     }}>
+  //     }}>gi
 
   //     </div>
   //   )
   // }
+  /* Creating an array of objects. */
+  function BoardFunction() {
+
+    const [inStockOnly, setInStockOnly] = useState(false);
+    const [foundPatrick, setFoundPatrick] = useState(false);
+    const [foundTom, setFoundTom] = useState(false)
+    // const testJson = ['nazev', 'trivialni', 'grafika', 'pokrocile', 'jine']
+
+    /* Creating an array of objects. */
+    let testColumns = []
+
+    playerBoardKeys.forEach((element, index) => {
+      let testObj = {
+        Header: element,
+        accessor: element,
+        id: index
+      }
+      testColumns.push(testObj)
+    });
+
+    function ProductCategoryRow({ category }) {
+      return (
+        <tr>
+          <th colSpan="3">
+            {category}
+          </th>
+        </tr>
+      );
+    }
+
+    /**
+     * This function takes in a product object and returns a table row with the product's name, gameWon,
+     * patrick, and tom properties.
+     * @returns A React element.
+     */
+    function ProductRow({ product }) {
+      const name = product.name
+      const gameWon = product.gameWon
+      const patrick = product.patrick
+      const tom = product.tom
+
+      return (
+        <tr>
+          <td>{name}</td>
+          <td> <input type="checkbox" checked={gameWon} /> </td>
+          <td> <input type="checkbox" checked={patrick} /></td>
+          <td><input type="checkbox" checked={tom} /></td>
+        </tr>
+      );
+    }
+
+    function ProductTable({ products, inStockOnly }) {
+      const rows = [];
+      let lastCategory = null;
+      console.log(products)
+
+      products.forEach((product) => {
+        if (inStockOnly && !product.gameWon) {
+          return;
+        }
+        if (foundPatrick && !product.patrick) {
+          return;
+        }
+        if (foundTom && !product.tom) {
+          return
+        }
+        if (product.category !== lastCategory) {
+          rows.push(
+            <ProductCategoryRow
+              category={product.category}
+              key={product.category} />
+          );
+        }
+
+        rows.push(
+          <ProductRow
+            product={product}
+            key={product.name} />
+        );
+        lastCategory = product.category;
+      });
+
+      return (
+        <table >
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>gameWon</th>
+              <th>patrick</th>
+              <th>tom</th>
+
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </table>
+      );
+    }
+    //  { name: "Bata55555", gameWon: false, patrick: false, bowser: true, turnipHead: true, tom: true },
+
+    /**
+     * The SearchBar function returns a form element that contains three checkboxes, each of which is
+     * controlled by a state variable.
+     * @returns The SearchBar function is being returned.
+     */
+    function SearchBar() {
+      return (
+        <form>
+
+          <label>
+            <input type="checkbox" checked={inStockOnly} onChange={(e) => setInStockOnly(e.target.checked)} />
+            {' '}
+            Only show players, who have won
+
+          </label>
+          <br />
+          <br />
+          <label>
+            <input type="checkbox" checked={foundPatrick} onChange={(e) => setFoundPatrick(e.target.checked)} />
+            {' '}
+            Only show players, who have found patrick
+          </label>
+          <br />
+          <br />
+          <label>
+            <input type="checkbox" checked={foundTom} onChange={(e) => setFoundTom(e.target.checked)} />
+            {' '}
+            Only show players, who have found tom
+
+          </label>
+        </form>
+      );
+    }
+
+    function FilterableProductTable({ products }) {
+      return (
+        <div>
+          <SearchBar />
+          <ProductTable products={products} inStockOnly={inStockOnly} />
+        </div>
+      );
+    }
+
+    // let playerBoard = [
+    //   { name: "Bata55555", gameWon: false, patrick: false, bowser: true, turnipHead: true, tom: true },
+    //   { name: "OkysanOlesin", gameWon: false, patrick: false, bowser: true, turnipHead: true, tom: false },
+    //   { name: "NaiMan667", gameWon: true, patrick: true, bowser: true, turnipHead: true, tom: true },
+    //   { name: "LidlHasbik", gameWon: false, patrick: false, bowser: false, turnipHead: false, tom: false }
+    // ]
 
 
 
+    return <FilterableProductTable products={playerBoard} />;
+
+
+
+
+  }
 
   if (gameState === 'losing') {
     return (<><h1 style={{ textAlign: 'center', marginTop: '15%' }}>Damn <span className='easy-dif'>{nameInput}</span>, <br /> You have ran out of time <br />  (┬┬﹏┬┬)</h1 >
@@ -221,16 +398,22 @@ export function Input() {
     <div className='main-div'>
 
       <div className='input-form'>
-        <form>
-          <h1>Gonna find them all!</h1>
-          <input type='text' className='main-input'
-            value={nameInput}
-            placeholder='Your Name'
-            onChange={(e) => InputChange(e.target.value, setNameInput)}
-          />
-          <MyButton />
+        <div id='game-start-div'>
+          <form>
+            <h1 style={{ textAlign: 'center' }}>Find them all!</h1>
+            <input type='text' className='main-input'
+              value={nameInput}
+              placeholder='Your Name'
+              onChange={(e) => InputChange(e.target.value, setNameInput)}
+            />
+            <MyButton />
 
-        </form >
+          </form >
+        </div>
+        {/* <div id='leader-board'>
+          <h1>Best players</h1>
+          <BoardFunction />
+        </div> */}
       </div>
       <div className='items-to-find'>
         <h2>Bowser - <span className='easy-dif'> Easy</span></h2>

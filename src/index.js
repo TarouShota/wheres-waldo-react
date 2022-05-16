@@ -11,7 +11,7 @@ ReactDOM.render(
   <React.StrictMode>
 
     <Input />
-    <FollowCursor />
+    {/* <FollowCursor /> */}
 
     {/* <Waldo /> */}
     {/* <MyButton /> */}

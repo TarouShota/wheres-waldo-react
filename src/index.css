@@ -1,7 +1,8 @@
 body {
   max-width: 100%;
   margin: 0;
-  background-color: #2A2B2E;
+  background-color:
+    #15181a;
   color: #C0E2C4;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 2vw;
 }
 
 code {
@@ -30,7 +32,7 @@ code {
 }
 
 .toFind {
-  width: 15%;
+  width: 23%;
 }
 
 .items-to-find {
@@ -40,7 +42,10 @@ code {
 }
 
 .main-input {
-  margin-bottom: 10%
+  margin-bottom: 10%;
+  width: 97%;
+  height: 2rem;
+  border-radius: 0.3rem;
 }
 
 .main-div {
@@ -50,13 +55,18 @@ code {
 
 .input-form {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  flex-direction: column;
+  background-color:
+    #15181a;
+
 }
 
 .easy-dif {
   color: rgb(83, 230, 83);
 }
+
 
 .normal-dif {
   color: orange;
@@ -66,12 +76,166 @@ code {
   color: red;
 }
 
+#leader-board {
+  padding-top: 10vw;
+}
+
+#game-start-div {
+  background-color: #555555;
+  padding: 1.2vw;
+  border-radius: 0.6rem;
+  width: 25vw;
+}
+
+button {
+  width: 100%;
+
+  /* background-color: white;
+  border-radius: 0.2rem;
+  border: 0.05rem solid #2A2B2E; */
+
+}
+
 li {
   border: 0.1rem solid white;
   margin-top: 0.7rem;
   background-color: #040404;
   padding: 0.5rem;
   text-align: center;
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   cursor: pointer;
+}
+
+li:hover {
+  background-color: #18181a;
+}
+
+table {
+  margin-top: 3rem;
+  border-collapse: collapse;
+  border: 1px solid black;
+  text-align: center;
+  vertical-align: middle;
+
+
+}
+
+form {
+  /* margin-top: 5vw; */
+  font-size: 1.4vw;
+}
+
+
+th,
+td {
+  padding: 0.3rem;
+}
+
+h2 {
+  font-size: 1.8vw;
+}
+
+h1 {
+  font-size: 3vw;
+}
+
+
+
+
+/* CSS */
+/* .button-35 {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, .1) 0 6px 20px;
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s, -webkit-box-shadow .2s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-35:hover {
+  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+} */
+
+/* CSS */
+.button-57 {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #18181a;
+  color: #18181a;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 18px 18px 17px;
+  text-decoration: none;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  border-radius: 0.5rem;
+}
+
+.button-57 span:first-child {
+  position: relative;
+  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 10;
+}
+
+.button-57 span:last-child {
+  color: #C0E2C4;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 100;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translateY(225%) translateX(-50%);
+  height: 14px;
+  line-height: 13px;
+}
+
+.button-57:after {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(46, 46, 46);
+  transform-origin: bottom center;
+  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  transform: skewY(9.3deg) scaleY(0);
+  z-index: 50;
+}
+
+.button-57:hover:after {
+  transform-origin: bottom center;
+  transform: skewY(9.3deg) scaleY(2);
+}
+
+.button-57:hover span:last-child {
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 1;
+  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
 }

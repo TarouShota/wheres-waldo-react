@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# React-based find a waldo game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[GitHub Page](https://github.com/TarouShota/wheres-waldo-react/)
 
-## Available Scripts
+The game was created by - Adylov Bekzot
 
-In the project directory, you can run:
+Group 2, Novák David
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Object design
+![Faw diagram](https://i.ibb.co/H7Bvbtr/Fa-W-diagram.png)
 
-### `npm run eject`
+[The diagram](https://github.com/TarouShota/wheres-waldo-react/blob/master/wiw.vpp)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The main logic behind the game is to find 4 characters
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Hidden in the Where's Waldo-style illustration
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+There is a german term for this kind of illustration, which is - ```wimmelbilder```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Game Rules
 
-## Learn More
+The Player has 5 minutes in total
+In that time span he has to find 4 characters:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Bowser -  Mario game series,
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Turnip Head - Howl's moving castle,
 
-### Code Splitting
+Patrick - SpongeBob series,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Tom - Tom and Jerry series
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Under the hood
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The game is written using React library and JavaScript, which is a prototype-based object-oriented language
 
-### Advanced Configuration
+Used object-oriented programming principles:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Encapsulation and Inheritance
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+```javascript
+class Hidden {
+    constructor(name, position, found) {
+        this.name = name;
+        this.position = position;
+        this.found = false
+    }
+    clicked() {
+        this.found = true
+        return true
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    }
+}
+
+class EasyHidden extends Hidden {
+    constructor() {
+        super(...arguments);
+        this.dificulty = 'easy'
+
+    }
+}
+class NormalHidden extends Hidden {
+    constructor() {
+        super(...arguments);
+        this.dificulty = 'normal'
+    }
+}
+class HardHidden extends Hidden {
+    constructor() {
+        super(...arguments);
+        this.dificulty = 'hard'
+    }
+
+}
+```
+
+Image by [Anomaly World Studio](https://anomaly-world.com/)

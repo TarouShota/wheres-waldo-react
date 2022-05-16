@@ -1,16 +1,18 @@
-// import { createSearchForm } from "./script.js";
-
-// import { useMap } from "react-use";
-
-// createSearchForm(document.body, 'start');
 
 
 //database of players, can be sorted out
 
+/**
+ * Create an array of numbers from start to stop, incrementing by step.
+ * @param start - The first number in the sequence.
+ * @param stop - The value of the stop parameter is the first number that is not in the set.
+ * @param step - The step value.
+ */
 const range = (start, stop, step) =>
     Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + (i * step))
 
 
+/* A class that represents a hidden object in a game, with a name, position, and difficulty level. */
 class Hidden {
     constructor(name, position, found) {
         this.name = name;
@@ -61,6 +63,19 @@ export const chars = {
     patrick: patrick,
     tom: tom
 };
+
+export let playerBoard = [
+    { name: "Bata55555", gameWon: false, patrick: false, bowser: true, turnipHead: true, tom: true },
+    { name: "OkysanOlesin", gameWon: true, patrick: true, bowser: true, turnipHead: true, tom: false },
+    { name: "NaiMan667", gameWon: true, patrick: true, bowser: true, turnipHead: true, tom: true },
+    { name: "LidlHasbik", gameWon: false, patrick: true, bowser: false, turnipHead: false, tom: false }
+]
+
+export let playerBoardNames = []
+playerBoard.forEach(element => {
+    playerBoardNames.push(element.name)
+});
+export const playerBoardKeys = Object.keys(playerBoard[0])
 
 // patrick.clicked()
 // turnipHead.clicked()

@@ -1,10 +1,5 @@
 # React-based find a waldo game
 
-[GitHub Page](https://github.com/TarouShota/wheres-waldo-react/)
-
-The game was created by - Adylov Bekzot
-
-Group 2, Novák David
 
 
 
